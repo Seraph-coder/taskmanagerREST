@@ -13,7 +13,6 @@ import ru.naujava.taskmanager.service.UserService;
  * Главный класс приложения Task Manager.
  */
 @SpringBootApplication
-@EnableJpaAuditing
 public class TaskManagerApplication {
 
     private final UserService userService;

@@ -20,6 +20,7 @@
         <javamelody.version>2.5.1</javamelody.version>
         <jjwt.version>0.11.5</jjwt.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
+        <ydb.version>2.2.0</ydb.version>
     </properties>
 
     <dependencies>
@@ -60,9 +61,21 @@
         </dependency>
 
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <groupId>tech.ydb</groupId>
+            <artifactId>ydb-sdk-table</artifactId>
+            <version>${ydb.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.ydb</groupId>
+            <artifactId>ydb-sdk-topic</artifactId>
+            <version>${ydb.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.ydb.auth</groupId>
+            <artifactId>yc-auth-provider</artifactId>
+            <version>${ydb.version}</version>
         </dependency>
 
         <dependency>
