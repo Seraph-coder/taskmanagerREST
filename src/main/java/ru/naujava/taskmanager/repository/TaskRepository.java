@@ -1,6 +1,6 @@
 package ru.naujava.taskmanager.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.ListCrudRepository;  // ← именно этот!
 import ru.naujava.taskmanager.entity.Task;
 
 import java.util.List;
@@ -9,29 +9,15 @@ import java.util.Optional;
 /**
  * Репозиторий для управления задачами.
  */
-public interface TaskRepository extends JpaRepository<Task, Long> {
-    /**
-     * Находит все задачи пользователя и сортирует их по id по возрастанию.
-     */
+public interface TaskRepository extends ListCrudRepository<Task, Long> {
+
     List<Task> findByUser_IdOrderByIdAsc(Long userId);
 
-    /**
-     * Находит все невыполненные задачи пользователя.
-     */
     List<Task> findByUser_IdAndIsDoneFalseOrderByIdAsc(Long userId);
 
-    /**
-     * Находит все выполненные задачи пользователя.
-     */
     List<Task> findByUser_IdAndIsDoneTrueOrderByIdAsc(Long userId);
 
-    /**
-     * Находит задачу по её ID и ID пользователя.
-     */
     Optional<Task> findByIdAndUser_Id(Long id, Long userId);
 
-    /**
-     * Проверяет, существует ли задача с таким описанием у указанного пользователя.
-     */
     boolean existsByUser_IdAndDescription(Long userId, String description);
 }
